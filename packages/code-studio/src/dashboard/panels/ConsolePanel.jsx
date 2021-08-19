@@ -126,7 +126,7 @@ class ConsolePanel extends PureComponent {
       log.info(`Starting connection to '${websocketUrl}'...`);
 
       const connection = new dh.IdeConnection(websocketUrl);
-
+      connection.addEventListener('hack-connection-failure', evt => window.alert(evt.detail.details));
       log.info('Getting console types...');
 
       const types = await this.pending.add(connection.getConsoleTypes());
